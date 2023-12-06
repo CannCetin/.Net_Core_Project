@@ -4,6 +4,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace CoreDemo1.ViewComponents.Writer
 
     public class WriterAboutOnDashboard : ViewComponent
     {
-        WriterManager wm = new WriterManager(new EfWriterRepository());
+        UserManager um = new UserManager(new EfUserRepository());
         
         Context c = new Context();
 
@@ -21,9 +22,9 @@ namespace CoreDemo1.ViewComponents.Writer
            
             var username = User.Identity.Name;
             ViewBag.veri = username;
-            var usermail=c.Users.Where(x=>x.UserName==username).Select(y=>y.Email).FirstOrDefault();
-            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
-            var values = wm.GetWriterById(writerID);
+            //var usermail=c.Users.Where(x=>x.UserName==username).Select(y=>y.Email).FirstOrDefault();
+            var userID = c.Users.Where(x => x.UserName==username).Select(y=>y.Id).FirstOrDefault();
+            var values = new List<AppUser> { um.TGetById(userID) };
             return View(values);
         }
     }

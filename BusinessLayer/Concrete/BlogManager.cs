@@ -25,7 +25,7 @@ namespace BusinessLayer.Concrete
         }
 		public List<Blog> GetListWithCategoryByWriterBm(int id) 
 		{
-            return _blogdal.GetListWithCategoryByWriter(id);
+            return _blogdal.GetListWithCategoryByUser(id);
         }
 
         public Blog TGetById(int id)

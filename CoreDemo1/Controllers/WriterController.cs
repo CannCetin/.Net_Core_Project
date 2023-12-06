@@ -20,6 +20,7 @@ namespace CoreDemo1.Controllers
 	{
 		WriterManager wm = new WriterManager(new EfWriterRepository());
         UserManager userManager = new UserManager(new EfUserRepository());
+        Context c = new Context();
         private readonly UserManager<AppUser> _userManager;
 
 		public WriterController(UserManager<AppUser> userManager)
@@ -33,7 +34,6 @@ namespace CoreDemo1.Controllers
 		{
 			var usermail = User.Identity.Name;
 			ViewBag.v = usermail;
-			Context c = new Context();
 			var writername = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterName).FirstOrDefault();
 			ViewBag.v2 = writername;
 			return View();
@@ -50,6 +50,9 @@ namespace CoreDemo1.Controllers
 
 		public PartialViewResult WriterNavbarPartial()
 		{
+			var userName=User.Identity.Name;
+			var nameSurname=c.Users.Where(x=>x.UserName== userName).Select(y=>y.NameSurname).FirstOrDefault();
+			ViewBag.nameSurname = "benim";
 			return PartialView();
 		}
 
@@ -109,6 +112,9 @@ namespace CoreDemo1.Controllers
 			wm.TAdd(w);
 			return RedirectToAction("Index", "Dashboard");
 		}
+		
+
+
 		
 
 	}

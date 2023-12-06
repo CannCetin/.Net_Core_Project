@@ -9,6 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IMessage2Service :IGenericService<Message2>
     {
-        List<Message2> GetInboxListWithByWriter(int id);
+        List<Message2> GetInboxListWithByUser(int id);
+        List<Message2> GetSendboxListWithByUser(int id);
     }
 }
