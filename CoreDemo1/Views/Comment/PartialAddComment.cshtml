@@ -3,10 +3,10 @@
 <div class="comment-top">
 	<h4>Yorum Bırakın</h4>
 	<div class="comment-bottom">
-		<form action="/Comment/PartialAddComment/" method="post">
-			<input class="form-control" type="text" id="txtName" name="CommentUserName" placeholder="Adınız Soyadınız" required="">
-            <input class="form-control" type="text" id="txtTitle" name="CommenTitle" placeholder="Konu" required="">
-            <input class="form-control" type="text" id="txtBlogId" name="BlogID" value="@ViewBag.BlogId" hidden>
+		<form method="post">
+			<input class="form-control" type="text" id="txtName"  placeholder="Adınız Soyadınız" required="">
+            <input class="form-control" type="text" id="txtTittle"  placeholder="Konu" required="">
+            <input class="form-control" type="text" id="txtBlogId" value="@ViewBag.BlogId" hidden>
             <textarea class="form-control" id="txtContent" name="CommentContent" placeholder="Yorumunuz..." required=""></textarea>
 			<button type="submit" id="btn" class="btn btn-primary submit">Yorum Yap</button>
 		</form>
@@ -19,7 +19,7 @@
 
             let inputData = {
                 CommentUserName: $("#txtName").val(),
-                CommenTitle: $("#txtTitle").val(),
+                CommentTittle: $("#txtTittle").val(),
                 BlogID: $("#txtBlogId").val(),
                 CommentContent: $("#txtContent").val(),
             };

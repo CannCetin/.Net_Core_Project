@@ -22,7 +22,7 @@ namespace CoreDemo1.Controllers
         {
             p.MailStatus = true;
             nm.AddNewsLetter(p);
-            return RedirectToAction("Index","Blog");
+            return Json(new { success = true, data = p });
             
             
         }

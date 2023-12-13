@@ -7,15 +7,15 @@
 <br />
 
 @Html.Label("Mesaj ID")
-@Html.TextBoxFor(x=>x.MessageID , new { @class="form-control "})
+@Html.TextBoxFor(x=>x.MessageID , new { @class="form-control ", @disabled = "disabled" })
 <br />
 @Html.Label("Mesaj Başlığı")
-@Html.TextBoxFor(x=>x.Subject, new { @class="form-control "})
+@Html.TextBoxFor(x=>x.Subject, new { @class="form-control " , @disabled = "disabled"})
 <br />
 @Html.Label("Mesaj İçeriği")
-@Html.TextAreaFor(x=>x.MessageDetails,10,3, new { @class="form-control "})
+@Html.TextAreaFor(x=>x.MessageDetails,10,3, new { @class="form-control ", @disabled = "disabled"})
 <br />
 
-<button class="btn btn-success">Mesajlara Dön</button>
+<a class="btn btn-success" href="/Message/Inbox/">Mesajlara Dön</a>
 
 

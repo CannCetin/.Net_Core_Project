@@ -6,14 +6,14 @@
     <h3>Mail Bültenine Abone Olun</h3>
     <form method="post" class="subscribe_form">
         <input class="tech-btm" type="email" id="txtmail">
-        <input type="submit" id="btn" value="Abone Ol" />
+        <input type="submit" id="btn1" value="Abone Ol" />
     </form>
 </div>
 
 <script>
     $(document).ready(function () {
 
-        $("#btn").click(function () {
+        $("#btn1").click(function () {
 
             let inputData = {
                 Mail: $("#txtmail").val()
@@ -21,11 +21,10 @@
 
 
             $.ajax({
-                type: "post",
+                type: "POST",
                 url: "/Newsletter/SubscribeMail/",
                 data: { p: inputData },
                 success: function (func) {
-                    let result = jQuery.parseJSON(func);
                     alert("Başarıyla Kayıt Olunmuştur");
                 }
             });

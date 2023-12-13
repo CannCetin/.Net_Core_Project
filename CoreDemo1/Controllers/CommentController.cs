@@ -16,6 +16,7 @@ namespace CoreDemo1.Controllers
 	public class CommentController : Controller
 	{
 		CommentManager cm = new CommentManager(new EfCommentRepository());
+		Context c=new Context();
         public IActionResult Index()
 		{
 			return View();
@@ -32,12 +33,13 @@ namespace CoreDemo1.Controllers
 			p.CommentDate=DateTime.Parse(DateTime.Now.ToShortDateString());
 			p.CommentStatus = true;
             cm.CommentAdd(p);
-            return RedirectToAction("Index","Blog");
+            return Json(new { success = true, data = p });
         }
         public PartialViewResult CommentListByBlog(int id) 
 		{
 			var values =cm.GetList(id);
-			return PartialView(values);
+            
+            return PartialView(values);
 		} 
 	}
 }

@@ -22,7 +22,6 @@ namespace CoreDemo1.ViewComponents.Writer
            
             var username = User.Identity.Name;
             ViewBag.veri = username;
-            //var usermail=c.Users.Where(x=>x.UserName==username).Select(y=>y.Email).FirstOrDefault();
             var userID = c.Users.Where(x => x.UserName==username).Select(y=>y.Id).FirstOrDefault();
             var values = new List<AppUser> { um.TGetById(userID) };
             return View(values);

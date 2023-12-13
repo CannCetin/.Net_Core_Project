@@ -19,8 +19,7 @@ namespace CoreDemo1.Controllers
         
         Message2Manager mm = new Message2Manager(new EfMessage2Repository());
         UserManager um=new UserManager(new EfUserRepository());
-
-        DataAccessLayer.Concrete.Context c = new DataAccessLayer.Concrete.Context();
+        Context c = new Context();
         public IActionResult InBox()
         {
             var userName = User.Identity.Name;
@@ -48,7 +47,7 @@ namespace CoreDemo1.Controllers
             List<SelectListItem> uservalues = (from x in um.GetList()
                                                    select new SelectListItem
                                                    {
-                                                       Text = x.Email,
+                                                       Text = $"{x.NameSurname} - {x.Email}",
                                                        Value = x.Id.ToString()
                                                    }).ToList();
             ViewBag.cv = uservalues;

@@ -22,7 +22,8 @@ namespace CoreDemo1.Controllers
         Context c = new Context();
         [AllowAnonymous]
         public IActionResult Index()
-        {
+        { 
+            
             var values = bm.GetBlogListWithCategory();
             return View(values);
         }
@@ -30,7 +31,10 @@ namespace CoreDemo1.Controllers
         public IActionResult BlogReadAll(int id) 
         {
             ViewBag.BlogId = id;
-            var values = bm.GetBlogByID(id);
+			var commentCount = c.Comments.Where(x => x.BlogID == id).Count();
+			ViewBag.CommentCount = commentCount;
+			var values = bm.GetBlogByID(id);
+            
             return View(values);
         }
         public IActionResult BlogListByWriter()

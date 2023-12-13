@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model List<Blog>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -14,7 +15,7 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-lg-4 card">
-                            <a href="single.html">
+                            <a href="/Blog/BlogReadAll/@item.BlogID/">
                                 <img src="@item.BlogImage" class="card-img-top img-fluid" alt="">
                             </a>
                             <div class="card-body">
@@ -26,7 +27,7 @@
                                     </li>
                                     <li class="mx-2">
                                         <a href="#">
-                                            <i class="far fa-comment"></i> 0
+                                            <i class="far fa-comment"></i> @ViewBag.count
                                         </a>
                                     </li>
                                     <li>
